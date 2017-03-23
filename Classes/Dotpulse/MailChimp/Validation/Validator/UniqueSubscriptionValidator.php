@@ -7,6 +7,7 @@ namespace Dotpulse\MailChimp\Validation\Validator;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Validation\Validator\EmailAddressValidator;
+use TYPO3\Flow\I18n\Translator;
 use Dotpulse\MailChimp\Domain\Service\MailChimpService;
 
 /**
@@ -24,10 +25,19 @@ class UniqueSubscriptionValidator extends EmailAddressValidator {
     protected $mailChimpService;
 
     /**
+     * @Flow\Inject
+     * @var Translator
+     */
+    protected $translator;
+
+    /**
      * @var array
      */
     protected $supportedOptions = array(
-        'listId' => array(NULL, 'MailChimp List ID', 'string', TRUE)
+        'listId' => array(NULL, 'MailChimp List ID', 'string', TRUE),
+        'translation.id' => array('alreadyRegistered', 'Translation ID', 'string', FALSE),
+        'translation.source' => array('ValidationErrors', 'Translation Source', 'string', FALSE),
+        'translation.package' => array('Dotpulse.MailChimp', 'Translation Package', 'string', FALSE)
     );
 
     /**
@@ -40,7 +50,7 @@ class UniqueSubscriptionValidator extends EmailAddressValidator {
     protected function isValid($value) {
         $options = $this->getOptions();
         if ($this->validEmail($value) && $this->mailChimpService->isMember($options['listId'], $value)) {
-            $this->addError('This email address is already registered in our newsletter.', 1422317184);
+            $this->addError($this->translator->translateById($options['translation.id'], array(), null, null, $options['translation.source'], $options['translation.package']), 1422317184);
         }
     }
 
