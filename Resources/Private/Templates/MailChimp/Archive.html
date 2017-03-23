@@ -1,0 +1,14 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<f:if condition="{lists}">
+	<f:then>
+		<div class="list-group list-group-two-col newsletter-archive">
+			<f:for each="{lists}" as="list">
+				<a href="{list.archive_url}" target="_blank" class="list-group-item list-group-item-action">
+					<h4 class="list-group-item-heading"><f:format.date format="d.m.Y">{list.send_time}</f:format.date></h4>
+					<p class="list-group-item-text">{list.title}</p>
+				</a>
+			</f:for>
+		</div>
+	</f:then>
+	<f:else><div><f:translate package="Dotpulse.MailChimp" id="noData" /></div></f:else>
+</f:if>

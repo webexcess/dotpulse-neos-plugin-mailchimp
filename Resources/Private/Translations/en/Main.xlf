@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Dotpulse.MailChimp" source-language="en" datatype="plaintext">
+		<body>
+			<trans-unit id="noData" xml:space="preserve">
+				<source>No data found.</source>
+			</trans-unit>
+			<trans-unit id="noListId" xml:space="preserve">
+				<source>Please enter a List-ID.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

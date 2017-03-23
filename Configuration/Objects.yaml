@@ -1,0 +1,5 @@
+# Set the configured MailChimp API key when instanciating the MailChimpService singleton
+Dotpulse\MailChimp\Domain\Service\MailChimpService:
+  arguments:
+    1:
+      setting: 'Dotpulse.MailChimp.apiKey'

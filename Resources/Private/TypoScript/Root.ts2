@@ -1,0 +1,7 @@
+prototype(Dotpulse.MailChimp:Archive) < prototype(TYPO3.Neos:Plugin) {
+	package = 'Dotpulse.MailChimp'
+	controller = 'MailChimp'
+	action = 'archive'
+	listId = ${q(node).property('listId')}
+	folderId = ${q(node).property('folderId')}
+}

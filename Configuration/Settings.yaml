@@ -1,0 +1,27 @@
+Dotpulse:
+  MailChimp:
+    # set this to a valid MailChimp API key!
+    apiKey: ''
+
+TYPO3:
+  Neos:
+    typoScript:
+      autoInclude:
+        'Dotpulse.MailChimp': TRUE
+
+    userInterface:
+      translation:
+        autoInclude:
+          'Dotpulse.MailChimp': ['Main', 'NodeTypes/*']
+
+  Form:
+    presets:
+      default:
+        finisherPresets:
+          # register a custom Form finisher that subscribes emails to a given MailChimp list
+          'Dotpulse.MailChimp:MailChimpSubscriptionFinisher':
+            implementationClassName: 'Dotpulse\MailChimp\Finishers\MailChimpSubscriptionFinisher'
+
+        validatorPresets:
+          'Dotpulse.MailChimp:UniqueSubscription':
+            implementationClassName: 'Dotpulse\MailChimp\Validation\Validator\UniqueSubscriptionValidator'

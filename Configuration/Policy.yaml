@@ -1,0 +1,11 @@
+privilegeTargets:
+  'TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'Dotpulse.MailChimp:Archive':
+      matcher: 'method(Dotpulse\MailChimp\Controller\MailChimpController->archiveAction())'
+
+roles:
+  'TYPO3.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'Dotpulse.MailChimp:Archive'
+        permission: GRANT
