@@ -6,14 +6,13 @@ namespace Dotpulse\MailChimp\Controller;
  */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Error\Message;
-use TYPO3\Neos\Controller\Module\AbstractModuleController;
+use TYPO3\Flow\Mvc\Controller\ActionController;
 use Dotpulse\MailChimp\Domain\Service\MailChimpService;
 
 /**
  * @Flow\Scope("singleton")
  */
-class MailChimpController extends AbstractModuleController {
+class MailChimpController extends ActionController {
 
     /**
      * @Flow\Inject
